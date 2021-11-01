@@ -14,7 +14,7 @@ namespace MyExercises
             //Client1
             Console.WriteLine("Write please the height and the width you want to create array!");
             int height1 = Convert.ToInt32(Console.ReadLine());
-            int width1  = Convert.ToInt32(Console.ReadLine());
+            int width1 = Convert.ToInt32(Console.ReadLine());
             int[,] myArr = CreateArr(height1, width1);
             Print(myArr);
             //Find maximum element of given array and print
@@ -32,7 +32,7 @@ namespace MyExercises
             Console.WriteLine("Write please the height and the width you want to create array, to find minimum!");
             int height3 = Convert.ToInt32(Console.ReadLine());
             int width3 = Convert.ToInt32(Console.ReadLine());
-            int[,] arr3 = CreateArr(height3,width3);
+            int[,] arr3 = CreateArr(height3, width3);
             Print(arr3);
             Print(GetMin(arr3));
             //FInd minimum element of given array and print
@@ -67,11 +67,16 @@ namespace MyExercises
             Print(GetMax(arr6));
             Print(GetMin(arr6));
             Console.WriteLine();
-            Swap(arr6,GetMaxID(arr6),GetMinID(arr6));
+            Swap(arr6, GetMaxID(arr6), GetMinID(arr6));
             Console.WriteLine();
             Print(arr6);
-
-
+            //Find the Id of minimum element of given array and print them
+            //Client7
+            Console.WriteLine("Write please thes size you want to create array for finding min element Id!");
+            int size7 = Convert.ToInt32(Console.ReadLine());
+            int[] arr7 = CreateArr(size7);
+            Print(arr7);
+            Print(GetMinID(arr7));
         }
         /// <summary>
         /// Creates array with given height and width of random numbers from 0 to 10 
@@ -79,7 +84,7 @@ namespace MyExercises
         /// <param name="height">given any Int32 value</param>
         /// <param name="width">given any Int32 value </param>
         /// <returns>Returnes two-diimensional array of Int32 values</returns>
-        public static int[,] CreateArr(int height,int width)
+        public static int[,] CreateArr(int height, int width)
         {
             Random rnd = new Random();
             int[,] arr = new int[height, width];
@@ -112,7 +117,7 @@ namespace MyExercises
         /// </summary>
         /// <param name="arr">given any array of Int32</param>
         /// <returns>Returns max element of given array</returns>
-        public static int GetMax(int [,] arr)
+        public static int GetMax(int[,] arr)
         {
             int max = arr[0, 0];
             for (int i = 0; i < arr.GetLength(0); i++)
@@ -153,8 +158,8 @@ namespace MyExercises
             int max = arr[0];
             for (int i = 1; i < arr.Length; i++)
             {
-                    if (arr[i] > max)
-                        max = arr[i];
+                if (arr[i] > max)
+                    max = arr[i];
             }
             return max;
         }
@@ -168,7 +173,7 @@ namespace MyExercises
             int min = arr[0];
             for (int i = 1; i < arr.Length; i++)
             {
-                if (arr[i] < min )
+                if (arr[i] < min)
                     min = arr[i];
             }
             return min;
@@ -188,7 +193,7 @@ namespace MyExercises
 
                     diagonal[i] = arr[i, i];
 
-                } 
+                }
             }
             return diagonal;
         }
@@ -237,6 +242,44 @@ namespace MyExercises
             return coordinates;
         }
         /// <summary>
+        /// Findes the ID of maximum element of given array
+        /// </summary>
+        /// <param name="arr">Given Int32 array</param>
+        /// <returns>Returnes value Int32</returns>
+        public static int GetMaxID(int[] arr)
+        {
+            int max = arr[0];
+            int id = 0;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                    id = i;
+                }
+            }
+            return id;
+        }
+        /// <summary>
+        /// Findes the ID of minimum element of given array
+        /// </summary>
+        /// <param name="arr">Given Int32 array</param>
+        /// <returns>Returnes Int32 value</returns>
+        public static int GetMinID(int[] arr)
+        {
+            int min = arr[0];
+            int id = 0;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] < min)
+                {
+                    min = arr[i];
+                    id = i;
+                }
+            }
+            return id;
+        }
+        /// <summary>
         /// FIndes the ID of minimum element of given array
         /// </summary>
         /// <param name="arr">Given array of Int32</param>
@@ -267,7 +310,7 @@ namespace MyExercises
         /// Prints given two-dimensional array elements
         /// </summary>
         /// <param name="array">Given any array of Int32</param>
-        public static void Print(int [,] array)
+        public static void Print(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -305,7 +348,7 @@ namespace MyExercises
         /// <param name="arr">given two-dimensional arary of Int32</param>
         /// <param name="coord1">given arary for first element coordinates (length is 2)</param>
         /// <param name="coord2">given arary for secondelement coordinates (length is 2)</param>
-        public static void Swap(int[,] arr, int[] coord1,int[] coord2)
+        public static void Swap(int[,] arr, int[] coord1, int[] coord2)
         {
             int temp;
             temp = arr[coord1[0], coord1[1]];
@@ -318,12 +361,13 @@ namespace MyExercises
         /// <param name="arr">given array of Int32</param>
         /// <param name="coord1">given Int32 value for first  element</param>
         /// <param name="coord2">given Int32 value for second element</param>
-        public static void Swap(int[] arr,int coord1,int coord2)
+        public static void Swap(int[] arr, int coord1, int coord2)
         {
             int temp;
             temp = arr[coord1];
             arr[coord1] = arr[coord2];
             arr[coord2] = temp;
         }
+
     }
 }
